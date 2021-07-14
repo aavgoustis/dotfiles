@@ -1,0 +1,33 @@
+global !p
+from vimsnippets import foldmarker, make_box, get_comment_format
+LOREM = """
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod \
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At \
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, \
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
+"""
+endglobal
+
+# Signature
+snippet sign "Signature"
+Yours sincerely,
+
+Aris Avgoustis
+endsnippet
+
+# Current date
+snippet today "Date"
+`date +%F`
+endsnippet
+
+#┌──────────┐
+#│ Nice box │
+#└──────────┘
+
+# Dynamic box
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
