@@ -1,0 +1,5 @@
+game:
+  exe: /home/hackris/Games/minecraft/Launcher/minecraft-launcher
+  working_dir: /home/hackris/Games/minecraft/Launcher
+system:
+  disable_runtime: true

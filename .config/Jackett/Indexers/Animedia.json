@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://tt.animedia.tv/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": "anime_last_visit=1315600266; anime_last_activity=1630960278; anime_tracker=%7B%220%22%3A%22anime%2Fda-ya-pauk-i-chto-zhe%22%2C%221%22%3A%22anime%2Fpovelitel-tmy-drugaya-istoriya-mira-magiya-podchineniya%22%2C%222%22%3A%22anime%2Fvan-pis%22%2C%223%22%3A%22anime%2Fo-moyom-pererozhdenii-v-sliz%22%2C%224%22%3A%22anime%2Fdrakon-gornichnaya-kobayashi%22%2C%22token%22%3A%22d8a0b13e78e430c2d722dfc0f813778a9ede001d2e9c1d0e67d3aa048ec4e0a9e13a0cacb116ff370117258b5c57254c%22%7D; anime_csrf_token=d71e51100da2be22fd967e36c227d0b469994fbd; anime_stashid=%7B%22id%22%3A%2215ee8b8c8f04cde176064b26b4a0c5d0b5e49e54%22%2C%22dt%22%3A1630960266%7D"
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": null
+  },
+  {
+    "id": "tags",
+    "type": "inputtags",
+    "name": "Tags",
+    "value": ""
+  }
+]

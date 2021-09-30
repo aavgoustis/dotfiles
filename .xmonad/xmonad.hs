@@ -72,13 +72,13 @@ myModMask :: KeyMask
 myModMask = mod1Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"    -- Sets default terminal
+myTerminal = "kitty"    -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "firefox "  -- Sets qutebrowser as browser
+myBrowser = "firefox "  -- Sets firefox as browser
 
 myFileBrowser :: String
-myFileBrowser = "thunar"
+myFileBrowser = "nemo"
 
 myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
@@ -101,10 +101,11 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
+    spawnOnce "sudo tlp start"
     spawnOnce "lxsession &"
     spawnOnce "picom --config ~/.config/picom/picom.conf &"
-    spawnOnce "nm-applet &"
-    spawnOnce "volumeicon &"
+    -- spawnOnce "nm-applet &"
+    -- spawnOnce "volumeicon &"
     spawnOnce "conky -c ~/.config/conky/xmonad.conkyrc"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
     spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
@@ -343,7 +344,7 @@ myManageHook = composeAll
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        [ ("M-S-r", spawn "xmonad --recompile && xmonad --restart")  -- Restarts XMonad
+        [ ("M-S-r", spawn "killall xmobar && xmonad --recompile && xmonad --restart")  -- Restarts XMonad
         , ("M-S-q", io exitSuccess)              -- Quits xmonad
 
     -- Xrandr
@@ -481,8 +482,8 @@ myKeys =
         , ("<XF86AudioPrev>", spawn (myTerminal ++ "mocp --previous"))
         , ("<XF86AudioNext>", spawn (myTerminal ++ "mocp --next"))
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
-        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+        , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+        , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         , ("<XF86HomePage>", spawn "qutebrowser https://www.youtube.com/c/DistroTube")
         , ("<XF86Search>", spawn "dmsearch")
         , ("<XF86Mail>", runOrRaise "thunderbird" (resource =? "thunderbird"))

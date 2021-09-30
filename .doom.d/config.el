@@ -1,12 +1,12 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Aris Avgoustis"
-      user-mail-address "aatiger2007@protonmail.com")
+      user-mail-address "aris.avgoustis@protonmail.com")
 
 ;; Font tweaks
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono" :size 15)
-      doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 24))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "JetbrainsMono Nerd Font" :size 15)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -16,6 +16,18 @@
 (setq global-prettify-symbols-mode t)
 
 ;; Org-mode tweaks
+;; https://github.com/DogLooksGood/org-html-themify
+(add-to-list 'load-path "~/elisp/org-html-themify")
+
+(require 'org-html-themify)
+
+(setq org-html-themify-themes
+      '((dark . doom-dracula)
+        (light . leuven)))
+
+(add-hook 'org-mode-hook 'org-html-themify-mode)
+;; end
+
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-directory "~/Documents/org/"
@@ -26,7 +38,7 @@
         org-journal-dir "~/Org/journal/"
         org-journal-date-format "%B %d, %Y (%A) "
         org-journal-file-format "%d.%m.%Y.org"
-        org-hide-emphasis-markers t
+        ;; org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
         org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
