@@ -1,4 +1,8 @@
-clear Lock
-keycode 66 = Escape
-
+! Right-Alt remapped to Compose key
 keycode 108 = Multi_key
+
+! Swap Left-Alt and Left-Super
+remove mod1 = Alt_L
+remove mod4 = Super_L
+add mod1 = Super_L
+add mod4 = Alt_L
